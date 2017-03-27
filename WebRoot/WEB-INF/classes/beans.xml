@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx-xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<!-- 用于测试Spring的IOC -->
 	<bean id="date" class="java.util.Date" />
 
@@ -60,4 +60,5 @@
 	<bean id="categoryService" class="cn.it.shop.service.impl.CategoryServiceImpl">
 		<property name="sessionFactory" ref="sessionFactory" /><!-- 依赖的sessionFactory用我们之前配好的sessionFactory -->
 	</bean>
+	
 </beans> 
