@@ -18,11 +18,11 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/shop?useUnicode=true&amp;characterEncoding=UTF8" />
+			value="jdbc:mysql://localhost:3306/shop?useUnicode=true&amp;characterEncoding=utf8" />
 		<property name="user" value="root" />
 		<property name="password" value="root" />
 	</bean>
-
+	
 	<!-- org.springframework.orm.hibernate4.LocalSessionFactoryBean类在spring-orm-4.2.4.RELEASE.jar包的org.springframework.orm.hibernate4包中 -->
 	<!-- 配置sessionFactory用来产生一个session -->
 	<bean id="sessionFactory"

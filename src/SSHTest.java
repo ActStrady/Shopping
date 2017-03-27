@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.it.shop.model.Category;
+import cn.it.shop.service.CategoryService;
+import cn.it.shop.service.impl.CategoryServiceImpl;
 
 /**
  * @Description TODO(采用Spring的注解调试，仅仅支持Spring3.1及以上)
@@ -28,15 +30,27 @@ import cn.it.shop.model.Category;
 public class SSHTest {
     @Resource
     private Date date;
-    
-    @Test //测试Spring IOC的开发环境
+
+    @Resource
+    private CategoryService categoryService;
+
+    @Test
+    // 测试Spring IOC的开发环境
     public void springIoc() {
         System.out.println(date);
     }
-    @Test //测试Hibernate的开发环境，因为没有整合，可以直接new
+
+    @Test
+    // 测试Hibernate的开发环境，因为没有整合，可以直接new
     public void hibernate() {
         CategoryService categoryService = new CategoryServiceImpl();
         Category category = new Category("男士休闲", true);
         categoryService.save(category);
+    }
+
+    @Test
+    // 测试Hibernate和Spring整合后
+    public void hibernateAndSpring() {
+        categoryService.update(new Category(1, "女式休闲", true)); // categoryService通过Spring从上面注入进来的
     }
 }
