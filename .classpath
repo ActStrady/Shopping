@@ -24,5 +24,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/c3p0-0.9.5.1"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring4.2.4-persistence"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
