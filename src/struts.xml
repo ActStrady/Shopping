@@ -5,8 +5,9 @@
   
 <struts>  
     <package name="shop" extends="struts-default">  
-        <!-- category_update.actiocan： 访问update方法 -->   
-        <action name="category_*" class="cn.it.shop.action.CategoryAction" method="{1}">  
+      
+        <!-- class对应的是Spring中配置该Action的id值，因为要交给Spring管理 -->   
+        <action name="category_*" class="categoryAction" method="{1}">  
             <result name="index">/index.jsp</result>  
         </action>  
     </package>  

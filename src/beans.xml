@@ -13,6 +13,12 @@
 	<!-- 用于测试Spring的IOC -->
 	<bean id="date" class="java.util.Date" />
 
+	<!-- 注入CategoryAction类 -->
+	<bean id="categoryAction" class="cn.it.shop.action.CategoryAction"
+		scope="prototype">
+		<property name="categoryService" ref="categoryService" /> <!-- 依赖的categoryService用上面和Hibernate整合时配置好的categoryService -->
+	</bean>
+
 	<!-- com.mchange.v2.c3p0.ComboPooledDataSource类在c3p0-0.9.5.1.jar包的com.mchange.v2.c3p0包中 -->
 	<!-- hibernate与Spring的整合 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -22,7 +28,7 @@
 		<property name="user" value="root" />
 		<property name="password" value="root" />
 	</bean>
-	
+
 	<!-- org.springframework.orm.hibernate4.LocalSessionFactoryBean类在spring-orm-4.2.4.RELEASE.jar包的org.springframework.orm.hibernate4包中 -->
 	<!-- 配置sessionFactory用来产生一个session -->
 	<bean id="sessionFactory"
@@ -60,5 +66,5 @@
 	<bean id="categoryService" class="cn.it.shop.service.impl.CategoryServiceImpl">
 		<property name="sessionFactory" ref="sessionFactory" /><!-- 依赖的sessionFactory用我们之前配好的sessionFactory -->
 	</bean>
-	
+
 </beans> 
