@@ -1,3 +1,0 @@
-在hibernate.cfg.xml文件中的connection.url后加上
-?useUnicode=true&amp;characterEncoding=UTF8
-可以避免发生中文乱码，当不知道数据库的编码方式是否更改的情况下是个好方法。
