@@ -9,16 +9,35 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd" >
 	<!-- 用于测试Spring的IOC -->
 	<bean id="date" class="java.util.Date" />
 
-	<!-- 注入CategoryAction类 -->
-	<bean id="categoryAction" class="cn.it.shop.action.CategoryAction"
-		scope="prototype">
-		<property name="categoryService" ref="categoryService" /> <!-- 依赖的categoryService用上面和Hibernate整合时配置好的categoryService -->
-	</bean>
+	<!-- 使用注解 -->
+	<context:component-scan base-package="cn.it.shop.." />
 
+<!--使用了注解这些没用了
+	注入baseAction
+	如果是prototype类型，默认是使用时创建，不是启动时自动创建
+	<bean id="baseAction" class="cn.it.shop.action.BaseAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"></property>
+		<property name="accountService" ref="accountService"></property>
+	</bean>
+	<bean id="categoryAction" class="cn.it.shop.action.CategoryAction"
+		scope="prototype" parent="baseAction" />
+
+	注入baseService
+	泛型类是不能实例化的，所以要加lazy-init属性
+	<bean id="baseService" class="cn.it.shop.service.impl.BaseServiceImpl"
+		lazy-init="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="categoryService" class="cn.it.shop.service.impl.CategoryServiceImpl"
+		parent="baseService" />
+	<bean id="accountService" class="cn.it.shop.service.impl.AccountServiceImpl"
+		parent="baseService" />
+ -->
+ 
 	<!-- com.mchange.v2.c3p0.ComboPooledDataSource类在c3p0-0.9.5.1.jar包的com.mchange.v2.c3p0包中 -->
 	<!-- hibernate与Spring的整合 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -62,16 +81,5 @@
 			连接了上面的advice和上面的pointcut -->
 		<!-- aop:pointcut要写在aop:advisor上面，否则会报错 -->
 	</aop:config>
-
-	<!-- 泛型类是不能实例化的，所以要加lazy-init属性 -->
-	<bean id="baseService" class="cn.it.shop.service.impl.BaseServiceImpl"
-		lazy-init="true">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="categoryService" class="cn.it.shop.service.impl.CategoryServiceImpl"
-		parent="baseService" />
-
-	<bean id="accountService" class="cn.it.shop.service.impl.AccountServiceImpl"
-		parent="baseService" />
+	
 </beans> 

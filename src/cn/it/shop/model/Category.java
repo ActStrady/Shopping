@@ -8,7 +8,6 @@ public class Category implements java.io.Serializable {
 
     // Fields
 
-    
     private Integer id;
     private String type;
     private Boolean hot;
@@ -23,6 +22,7 @@ public class Category implements java.io.Serializable {
         this.type = type;
         this.hot = hot;
     }
+
     /** full constructor */
     public Category(Integer id, String type, Boolean hot) {
         this.id = id;
