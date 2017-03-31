@@ -17,7 +17,7 @@ import cn.it.shop.service.CategoryService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-//将BaseAction中的内容归归类了  
+//将BaseAction中的内容归类了  
 @Controller("baseAction")
 @Scope("prototype")
 public class BaseAction<T> extends ActionSupport implements RequestAware,

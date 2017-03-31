@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE struts PUBLIC  
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
-    "http://struts.apache.org/dtds/struts-2.3.dtd">  
-  
-<struts>  
-    <package name="shop" extends="struts-default">  
-      
-        <!-- class对应的是Spring中配置该Action的id值，因为要交给Spring管理 -->   
-        <action name="category_*" class="categoryAction" method="{1}">  
-            <result name="index">/index.jsp</result>  
-        </action>  
-    </package>  
-  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="shop" extends="struts-default">
+		<!-- 全局result，对这个package中的所有action有效 -->
+		<global-results>
+			<result name="aindex">/WEB-INF/main/aindex.jsp</result>
+		</global-results>
+		
+		<!-- class对应的是Spring中配置该Action的id值，因为要交给Spring管理 -->
+		<action name="category_*" class="categoryAction" method="{1}">
+			<result name="index">/index.jsp</result>
+		</action>
+		
+		<!-- 用来完成系统 请求转发的action,所有的请求都交给execute-->
+		<action name="send_*_*" class="sendAction">
+			<result name="send">/WEB-INF/{1}/{2}.jsp</result>
+		</action>
+	</package>
+
 </struts>  

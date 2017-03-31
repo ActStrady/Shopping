@@ -15,6 +15,8 @@
 
 	<!-- 使用注解 -->
 	<context:component-scan base-package="cn.it.shop.." />
+	
+	<bean id="sendAction" class="cn.it.shop.action.SendAction" />
 
 <!--使用了注解这些没用了
 	注入baseAction
